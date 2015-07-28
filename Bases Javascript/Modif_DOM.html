@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .red {
+            background : red;
+            color : blue;
+        }
+
+        .blue {
+            background : blue;
+            color : ghostwhite;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <input id='myInput' placeholder="Je vais deviner sur quoi t'as appuyé" size="30" />
+</form>
+
+<div id="contLien">
+    <a href="#1" target="_blank">Un lien 1</a>
+    <a href="#2" target="_blank">Un lien 2</a>
+</div>
+
+<div id="myDiv">
+    <p>hello</p>
+</div>
+
+<script>
+
+    var place = document.getElementById('myInput'); // Récupération de l'élément input grâce à son id nommé "myInput"
+    var renvoie = place.getAttribute('placeholder'); // On récupère l'attribut placeholder de la balise input récupéré précédemment
+
+    // Si l'utilisateur appuie sur OK
+
+    if(confirm('Je vais deviner sur quoi tu as cliqué!!!!')) {
+        document.getElementById('myInput').className = 'blue';  // L'élément input va recupérer la class CSS 'blue' initialisé plus haut dans le header
+        place.setAttribute('placeholder', 'T\'as appuyé sur OK !!!!'); // Dans le placeholder de l'élément input on écrira que l'utilisateur a appuyé sur OK
+
+    // Si l'utilisateur appuie sur ANNULER
+
+    }else{
+
+        document.getElementById('myInput').className = 'red'; // L'élément input va recupérer la class CSS 'red' initialisé plus haut dans le header
+        place.placeholder = 'T\'as appuyé sur ANNULER!!!!'; // Dans le placeholder de l'élément input on écrira que l'utilisateur a appuyé sur annuler avec une autre écriture qui évite d'utiliser setAttribute
+    }
+
+    document.getElementById('myDiv').innerHTML += 'Je mets une citation en plus'; // Ici on ajoute du texte dans la div en plus du texte qu'il y avait déjà (car +=)'
+
+    //On souhaite modifier le href des liens contenus dans la div avec l'id 'contLien'
+
+    var divLien = document.getElementById('contLien'); // On récupère l'élément div grâce à son id
+    var contLien = divLien.getElementsByTagName('a'); // On utilise getElementsByTagName afin de lister les différents balises a que contient la div sélectionnée. La variable va contenir un tableau de la taille du nombre de balise 'a' dans la div
+
+    //On crée une boucle afin de lire le tableau de la variable 'contLien'
+    //On peut remarquer que pour les liens nous n'utilisons pas setAttribute car il est possible de directement appelker l'attribut href
+
+    for(var i=0 ; i<contLien.length ; i++){
+
+        if(i == 0){
+            contLien[i].href = 'http://www.openclassrooms.com'; // Si c'est le premier élément du tableau on va remplacer son attribut href par le lien proposé
+        }else{
+            contLien[i].href = 'http://www.google.fr'; // Si c'est le deuxième on le remplace aussi.
+        }
+    }
+
+</script>
+</body>
+</html>
