@@ -27,7 +27,7 @@
 </div>
 
 <div id="myDiv">
-    <p>hello</p>
+    <p id='myP'>hello clic sur <a href="#">Un lien</a> ou alors sur <a href="#">un deuxième lien</a><strong> c'est comme tu le sens</strong></p>
 </div>
 
 <script>
@@ -68,6 +68,61 @@
         }
     }
 
+    //Dans cette partie nous allons accéder à l'élément parent grâce à parentNode
+
+    var place = document.getElementById('myInput'); //Il faut d'abord récupérer l'élément auquel on peut accéder et ensuite dans notre cas récupérer le parent qui est une balise <form>
+    var parentForm = place.parentNode; //Grâce à l'élément précédent on accède 
+
+    //alert(parentForm);
+
+    //Affichage du type et du nom du noeud récupéré
+    //alert(parentForm.nodeType + ' ' + parentForm.nodeName.toLowerCase());
+
+    //Affichage des noeuds enfants
+    var elemP = document.getElementById('myP'); // On récupère l'élément by id de la balise <p>
+    var firstC = elemP.firstChild; //on accède au premier enfant de l'élément qui est du texte
+    var lastC = elemP.lastChild; // idem mais le dernier
+
+    var firstEC = elemP.firstElementChild; // Tout comme firstChild mais dans ce cas on accède au premier enfant qui est un élément HTML (une balise) et non pas au texte
+    var lastEC = elemP.lastElementChild;
+
+    //alert(firstEC.nodeName);
+    //alert(firstC.nodeType);
+    //alert(lastC.firstChild.data);
+
+    var suivant = firstEC.nextSibling;
+    var suivantE = firstEC.nextElementSibling;
+
+    if(suivant.nodeType === 1) {
+        alert(suivant.firstChild.nodeValue);
+    } else {
+        alert(suivant.nodeValue);
+    }
+
+    if(lastC.nodeName.toLowerCase() === 'a') {
+        alert(suivantE.firstChild.nodeValue);
+    } else {
+        alert('Tu n\es pas une balise <a> mais une balise ' + lastC.nodeName.toLowerCase());
+    }
+
+    //Trouver le nombre d'enfants que contient un élément parent
+    //var elemP = document.getElementById('myP');
+    
+
+    //Création d'un nouvel élément
+    var newP = document.createElement('p');
+
+    //Création des attributs de la nouvelle balise p
+    newP.setAttribute('id', 'newP'); //Soit de cette manière comme on le connaît avec setAttribute(nomAttribut, valeur)
+    /*newP.id = 'newP';*/ //Ou alors comme ça en utilisant des propriétés
+
+    //Création du contenu textuel de la nouvelle balise et inseré dans l'élément
+    var contenuP = document.createTextNode('Je suis une nouvelle balise de type nom paragraphe');
+    newP.appendChild(contenuP);
+
+    //Insertion du nouvel élément dans la div d'id "myDiv"
+    var myDiv = document.getElementById('myDiv');
+    myDiv.appendChild(newP);
 </script>
 </body>
 </html>
