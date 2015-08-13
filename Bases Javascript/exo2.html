@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Exo 2</title>
+</head>
+<body>
+
+	<div id='output'>
+		
+
+	</div>
+
+	<script type="text/javascript">
+		var divO = document.getElementById('output');
+		var divT = divO.cloneNode(false);
+		var listeUl = document.createElement('ul');
+		var listeLi = document.createElement('li');
+		var noeudTexte = [
+			document.createTextNode('Javascript'),
+			document.createTextNode('JScript'),
+			document.createTextNode('ActionScript'),
+			document.createTextNode('EX4')
+		];
+		var p = document.createElement('p');
+		var pText = document.createTextNode('Langages basés sur ECMAScript :');
+
+
+		p.appendChild(pText);
+
+		divT.appendChild(p);
+		divT.id = 'divTP2';
+
+		divO.appendChild(divT);		
+
+		//Création des 
+		for (var i=0; i<noeudTexte.length; i++) {
+			var cloneLi;
+			if (i == 0){
+				listeLi.appendChild(noeudTexte[i]);
+				listeUl.appendChild(listeLi);
+			} else {
+				cloneLi = listeLi.cloneNode(false);
+				cloneLi.appendChild(noeudTexte[i]);
+				listeUl.appendChild(cloneLi);
+			}
+		}
+		divT.appendChild(listeUl);
+
+	</script>
+</body>
+</html>

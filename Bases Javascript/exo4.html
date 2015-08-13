@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Exo 2</title>
+</head>
+<body>
+
+	<div id='output'>
+		
+
+	</div>
+
+	<script type="text/javascript">
+
+		//Première partie, Création des variables
+
+		var divGP, divP, formE, fieldE, legendE, divE, labelE, inputE, brE, brE2, inputE2 //Variables des balises
+		var legendT, labelT; //Variables des textes
+
+
+		//Instanciation des variables (des balises)
+
+		divGP = document.getElementById('output'); //Récupération de l'id de la balise div grand père
+		divP = document.createElement('div'); //Création de la balise div parent
+		formE = document.createElement('form'); //Création de la balise form
+		fieldE = document.createElement('fieldset'); //Création de la balise fieldset
+		legendE = document.createElement('legend'); //Création de la balise legend
+		divE = document.createElement('div'); //Création de la balise div
+		labelE = document.createElement('label'); //Création de la balise label
+		inputE = document.createElement('input') //Création de la balise input
+		brE = document.createElement('br'); //Création de la balise br
+		brE2 = document.createElement('br'); //Création de la balise br
+		inputE2 = document.createElement('input'); //Création de la balise input
+
+
+		//Instanciation des variables (des textes)
+
+		legendT = document.createTextNode('Uploader une image'); //Création du texte de la balise legend
+		labelT = document.createTextNode('Image à uploader :'); //Création du texte de la balise label
+
+
+		//Création des attributs des différentes balises
+
+		divP.id = 'divTP4'; //Création d'un attribut id pour la balise div parent
+
+		formE.enctype = 'multipart/form-data'; //Création d'un attribut enctype pour la balise form
+		formE.method = 'post'; //Création d'un attribut method pour la balise form
+		formE.action = 'upload.php'; //Création d'un attribut action pour la balise form
+
+		/*divE.style = 'text-align: center';*/ //Création d'un attribut style pour la balise div enfant, ATTENTION POUR UN ATTRIBUT DE TYPE STYLE IL FAUDRA OBLIGATOIREMENT UTILISER LA FONCTION setAttribute()
+		divE.setAttribute('style', 'text-align: center'); //Bonne écriture de l'attribut style avec setAttribute
+
+		/*labelE.for = 'inputUpload';*/ //Création d'un attribut for pour la balise label, ATTENTION ON NE PEUT PAS UTILISER CETTE ECRITURE CAR FOR EST RESERVE AUX BOUCLES
+		labelE.htmlFor = 'inputUpload'; //Bonne écriture de l'attribut for avec htmlFor
+
+		inputE.type = 'file'; //Création d'un attribut type pour la balise input
+		inputE.name = 'inputUpload'; //Création d'un attribut name pour la balise input
+		inputE.id = 'inputUpload'; //Création d'un attribut id pour la balise input
+
+		inputE2.type = 'submit'; //Création d'un attribut type pour la balise input
+		inputE2.value = 'Envoyer'; //Création d'un attribut value pour la balise input
+
+
+		//Insérer les textes dans les balises
+
+		legendE.appendChild(legendT); //Insertion du texte dans la balise legend
+		labelE.appendChild(labelT); //Insertion du texte dans la balise label
+
+
+		//Insertion des balises dans le DOM
+
+		divGP.appendChild(divP); //Insertion de la balise div parent dans la balise div grand-père
+		divP.appendChild(formE); //Insertion de la balise form enfant dans la balise div parent
+		formE.appendChild(fieldE); //Insertion de la balise fieldset enfant dans la balise form parent
+		fieldE.appendChild(legendE); //Insertion de la balise legend enfant dans la balise fieldset parent
+		fieldE.appendChild(divE); //Insertion de la balise div enfant dans la balise fieldset parent
+		divE.appendChild(labelE); //Insertion de la balise label enfant dans la balise div parent
+		divE.appendChild(inputE); //Insertion de la balise input enfant dans la balise div parent
+		divE.appendChild(brE); //Insertion de la balise br enfant dans la balise div parent
+		divE.appendChild(brE2); //Insertion de la balise br enfant dans la balise div parent
+		divE.appendChild(inputE2); //Insertion de la balise input enfant dans la balise div parent
+
+	</script>
+</body>
+</html>
